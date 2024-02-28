@@ -6,7 +6,7 @@ You are going to work in a group. Create **only one project per group** using th
 
 🚀 Project Deployment to GitHub Pages is required: Please adhere to the deployment guidelines outlined in your repository's documentation `(https://github.com/spiced-academy/[your-cohort-name]-web-dev/blob/main/docs/github-pages.md)` for detailed instructions. In the URL replace `[your-cohort-name]` with your cohort's designated name.
 
----
+--
 
 ## API
 
