@@ -1,4 +1,4 @@
-import {createCharacterCard} from "./components/card/card.js"
+import { createCharacterCard } from "./components/card/card.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -14,5 +14,36 @@ const pagination = document.querySelector('[data-js="pagination"]');
 const maxPage = 1;
 const page = 1;
 const searchQuery = "";
+
+async function fetchCharacters() {
+  try {
+    const response = await fetch("https://rickandmortyapi.com/api/character");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+const characters = await fetchCharacters();
+cardContainer.innerHTML = "";
+
+characters.results.forEach((element) => {
+  const { image, name, status, type } = element;
+  createCharacterCard(
+    cardContainer,
+    image,
+    name,
+    status,
+    type,
+    element.episode.length
+  );
+
+  // img,
+  // nameOfcharacter,
+  // status,
+  // type,
+  // occurrences
+});
 
 createCharacterCard(cardContainer);
