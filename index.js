@@ -1,4 +1,10 @@
 import { createCharacterCard } from "./components/card/card.js";
+import { prevButton } from "./components/nav-button/nav-button.js";
+import { nextButton } from "./components/nav-button/nav-button.js";
+import {
+  paginationObj,
+  updatePagination,
+} from "./components/nav-pagination/nav-pagination.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -6,18 +12,12 @@ const searchBarContainer = document.querySelector(
 );
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
-const prevButton = document.querySelector('[data-js="button-prev"]');
-const nextButton = document.querySelector('[data-js="button-next"]');
-const pagination = document.querySelector('[data-js="pagination"]');
 
-// States
-const maxPage = 1;
-const page = 1;
-const searchQuery = "";
-
-async function fetchCharacters() {
+export async function fetchCharacters(page) {
   try {
-    const response = await fetch("https://rickandmortyapi.com/api/character");
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character?page=${page}`
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -25,25 +25,23 @@ async function fetchCharacters() {
   }
 }
 
-const characters = await fetchCharacters();
-cardContainer.innerHTML = "";
+export const renderList = async () => {
+  const data = await fetchCharacters(paginationObj.page);
+  paginationObj.max = data.info.pages;
+  updatePagination();
+  cardContainer.innerHTML = "";
 
-characters.results.forEach((element) => {
-  const { image, name, status, type } = element;
-  createCharacterCard(
-    cardContainer,
-    image,
-    name,
-    status,
-    type,
-    element.episode.length
-  );
+  data.results.forEach((element) => {
+    const { image, name, status, type } = element;
+    createCharacterCard(
+      cardContainer,
+      image,
+      name,
+      status,
+      type,
+      element.episode.length
+    );
+  });
+};
 
-  // img,
-  // nameOfcharacter,
-  // status,
-  // type,
-  // occurrences
-});
-
-createCharacterCard(cardContainer);
+renderList();
