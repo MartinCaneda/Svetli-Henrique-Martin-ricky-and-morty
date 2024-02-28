@@ -29,15 +29,7 @@ export const renderList = async () => {
   const data = await fetchCharacters(currPage);
   cardContainer.innerHTML = "";
   data.results.forEach((element) => {
-    const { image, name, status, type } = element;
-    createCharacterCard(
-      cardContainer,
-      image,
-      name,
-      status,
-      type,
-      element.episode.length
-    );
+    createCharacterCard(cardContainer, element);
   });
   updatePagination(data.info.pages);
 };

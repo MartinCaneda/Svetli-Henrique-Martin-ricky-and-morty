@@ -1,13 +1,8 @@
 export function createCharacterCard(
   container,
-  img,
-  nameOfcharacter,
-  status,
-  type,
-  occurrences
+  { image: img, name: nameOfcharacter, status, type, episode }
 ) {
   const newCard = document.createElement("li");
-
   newCard.classList.add("card");
   newCard.innerHTML = `
 	<div class="card__image-container">
@@ -26,9 +21,8 @@ export function createCharacterCard(
 		<dt class="card__info-title">Type</dt>
 		<dd class="card__info-description">${type ? type : "-"}</dd>
 		<dt class="card__info-title">Occurrences</dt>
-		<dd class="card__info-description">${occurrences}</dd>
+		<dd class="card__info-description">${episode.length}</dd>
 	  </dl>
 	</div>`;
-
   container.append(newCard);
 }
