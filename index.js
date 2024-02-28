@@ -2,8 +2,8 @@ import { createCharacterCard } from "./components/card/card.js";
 import { prevButton } from "./components/nav-button/nav-button.js";
 import { nextButton } from "./components/nav-button/nav-button.js";
 import {
-  paginationObj,
   updatePagination,
+  currPage,
 } from "./components/nav-pagination/nav-pagination.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
@@ -26,11 +26,8 @@ export async function fetchCharacters(page) {
 }
 
 export const renderList = async () => {
-  const data = await fetchCharacters(paginationObj.page);
-  paginationObj.max = data.info.pages;
-  updatePagination();
+  const data = await fetchCharacters(currPage);
   cardContainer.innerHTML = "";
-
   data.results.forEach((element) => {
     const { image, name, status, type } = element;
     createCharacterCard(
@@ -42,6 +39,7 @@ export const renderList = async () => {
       element.episode.length
     );
   });
+  updatePagination(data.info.pages);
 };
 
 renderList();
