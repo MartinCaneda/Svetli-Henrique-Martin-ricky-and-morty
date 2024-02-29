@@ -13,11 +13,14 @@ const searchBarContainer = document.querySelector(
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
 
+let query = null;
+let fetchURL = "";
+
 export async function fetchCharacters(page) {
   try {
-    const response = await fetch(
-      `https://rickandmortyapi.com/api/character?page=${page}`
-    );
+    fetchURL = `https://rickandmortyapi.com/api/character?page=${page}`;
+    if (query) fetchURL += `&name=${query}`;
+    const response = await fetch(fetchURL);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -35,3 +38,13 @@ export const renderList = async () => {
 };
 
 renderList();
+
+const form = document.querySelector('[data-js="search-bar"]');
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const info = new FormData(event.target);
+  const data = Object.fromEntries(info);
+  query = data.query;
+  renderList();
+  console.log(data.query);
+});

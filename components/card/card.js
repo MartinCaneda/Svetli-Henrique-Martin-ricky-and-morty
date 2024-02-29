@@ -24,5 +24,6 @@ export function createCharacterCard(
 		<dd class="card__info-description">${episode.length}</dd>
 	  </dl>
 	</div>`;
+  //   console.log(newCard);
   container.append(newCard);
 }
