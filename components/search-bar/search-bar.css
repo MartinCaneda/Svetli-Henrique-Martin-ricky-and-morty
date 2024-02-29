@@ -1,5 +1,14 @@
 .search-bar-container {
-  width: 300px;
+  position: fixed;
+  display: flex;
+  margin-top: -45px;
+  z-index: 100;
+  background-color: var(--white);
+  width: 100vw;
+  top: 100px;
+  left: 0;
+  padding: 10px;
+  justify-content: center;
 }
 
 .search-bar {
@@ -7,6 +16,7 @@
   background-color: var(--color-secondary);
   display: grid;
   grid-template-columns: 1fr 24px;
+  border-radius: 10px;
 }
 
 .search-bar__input {
