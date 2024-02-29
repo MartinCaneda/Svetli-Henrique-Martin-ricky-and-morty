@@ -1,12 +1,12 @@
-import { fetchCharacters, renderList } from "../../index.js";
-import { prevButton } from "../nav-button/nav-button.js";
-// import { fetchCharacters } from "../nav-button/nav-button.js";
+import { renderList } from "../../index.js";
 
 // States
 let max = null;
 export let currPage = 1;
-const pagination = document.querySelector('[data-js="pagination"]');
-let searchQuery = "";
+
+export function setCurrPage(page) {
+  currPage = page;
+}
 
 export const paginate = (event) => {
   const currentButton = event.target.getAttribute("data-js");
@@ -20,5 +20,22 @@ export const paginate = (event) => {
 
 export const updatePagination = (maxPages) => {
   max = maxPages;
-  pagination.innerHTML = currPage + " / " + max;
+  const updateBlock = document.querySelector('[data-js="pagination"]');
+  if (maxPages) {
+    updateBlock.textContent = currPage + " / " + max;
+  } else {
+    updateBlock.textContent = "";
+  }
 };
+
+export function createPagination() {
+  const navigation = document.createElement("nav");
+  navigation.classList.add("navigation");
+  navigation.setAttribute("data-js", "navigation");
+
+  const infoPagination = document.createElement("span");
+  infoPagination.classList.add("navigation__pagination");
+  infoPagination.setAttribute("data-js", "pagination");
+  navigation.append(infoPagination);
+  return navigation;
+}
