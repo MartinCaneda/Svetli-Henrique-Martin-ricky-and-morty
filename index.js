@@ -1,4 +1,5 @@
 import { createCharacterCard } from "./components/card/card.js";
+import { createSearchBar } from "./components/search-bar/search-bar.js";
 import {
   updatePagination,
   currPage,
@@ -8,13 +9,8 @@ import {
 } from "./components/nav-pagination/nav-pagination.js";
 import { createButton } from "./components/nav-button/nav-button.js";
 
-const body = document.querySelector("body");
-
+const main = document.querySelector("main");
 const cardContainer = document.querySelector('[data-js="card-container"]');
-const searchBarContainer = document.querySelector(
-  '[data-js="search-bar-container"]'
-);
-const searchBar = document.querySelector('[data-js="search-bar"]');
 
 let query = null;
 let fetchURL = "";
@@ -25,7 +21,6 @@ export async function fetchCharacters(page) {
     if (query) fetchURL += `&name=${query}`;
     const response = await fetch(fetchURL);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -48,7 +43,8 @@ export const renderList = async () => {
 
 renderList();
 
-const form = document.querySelector('[data-js="search-bar"]');
+const searchBar = createSearchBar();
+const form = searchBar.firstChild;
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const info = new FormData(event.target);
@@ -57,8 +53,9 @@ form.addEventListener("submit", (event) => {
   setCurrPage(1);
   renderList();
 });
+main.prepend(searchBar);
 
 const pagination = createPagination();
 pagination.prepend(createButton("prev", "previous", paginate));
 pagination.append(createButton("next", "next", paginate));
-body.append(pagination);
+main.append(pagination);
