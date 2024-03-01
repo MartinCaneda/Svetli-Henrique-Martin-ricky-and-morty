@@ -49,7 +49,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   const info = new FormData(event.target);
   const data = Object.fromEntries(info);
-  query = data.query;
+  query = data.query.toLowerCase();
   setCurrPage(1);
   renderList();
   event.target.querySelector('input[type="text"]').value = "";

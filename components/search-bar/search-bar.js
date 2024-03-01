@@ -17,6 +17,7 @@ export function createSearchBar() {
   const img = document.createElement("img");
   img.classList.add("search-bar__icon");
   img.setAttribute("src", "assets/magnifying-glass.png");
+  img.setAttribute("alt", "Search button");
   button.append(img);
   form.append(input, button);
   searchBarContainer.append(form);
