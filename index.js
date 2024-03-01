@@ -48,6 +48,7 @@ const form = searchBar.firstChild;
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const info = new FormData(event.target);
+
   const data = Object.fromEntries(info);
   query = data.query;
   setCurrPage(1);

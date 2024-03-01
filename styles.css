@@ -23,7 +23,7 @@
 body {
   font-family: var(--font-family);
   color: var(--color-primary);
-  padding: 30px 20px 80px;
+  padding: 120px 20px 90px;
   margin-top: 110px;
   background-color: #f0f0f0;
 }
@@ -41,10 +41,11 @@ main {
   position: fixed;
   background-color: var(--green);
   color: var(--blue);
-  text-shadow: 3px 3px 7px var(--yellow);
+  text-shadow: 3px 3px 0px var(--yellow);
   top: 0;
   left: 0;
   width: 100vw;
   z-index: 100;
   font-family: "Annie Use Your Telescope", cursive;
+  font-size: 6rem;
 }
