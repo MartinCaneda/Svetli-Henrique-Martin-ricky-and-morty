@@ -12,18 +12,20 @@
 :root {
   --color-primary: rgb(51, 51, 51);
   --color-secondary: #f6f6f6;
-  --green: #bfde42;
+  --green: #9db92e;
   --yellow: #fff8b8;
-  --blue: #41b4c9;
+  --blue: #3695a5;
   --white: #ffffff;
+  --light-gray: #ccc;
   --font-family: "Montserrat", sans-serif;
 }
 
 body {
   font-family: var(--font-family);
   color: var(--color-primary);
-  padding: 20px;
+  padding: 30px 20px 80px;
   margin-top: 110px;
+  background-color: #f0f0f0;
 }
 
 main {

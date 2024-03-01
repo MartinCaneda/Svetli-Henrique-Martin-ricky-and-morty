@@ -1,5 +1,8 @@
 .button {
   border: none;
+  border-radius: 3px;
+  padding: 10px 5px;
+  cursor: pointer;
 }
 
 .button:hover {

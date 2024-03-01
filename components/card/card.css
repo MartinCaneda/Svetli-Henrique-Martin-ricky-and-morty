@@ -4,25 +4,32 @@
   position: relative;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
 }
 
 .card__image {
   border-radius: 10px;
+  width: 100%;
 }
 .card {
   width: 300px;
-  background-color: var(-white);
+  background-color: var(--white);
   border-radius: 10px;
-  box-shadow: 0px 0px 4px var(--color-secondary);
+  box-shadow: 0px 0px 10px var(--light-gray);
 }
 
 .card__info {
   display: grid;
   grid-template-columns: auto 1fr;
+  font-size: 0.9rem;
+}
+.card__info > dt,
+.card__info > dd {
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
 }
 .card__content {
-  padding: 10px 20px 20px;
+  padding: 15px 20px 20px;
   display: grid;
   gap: 20px;
 }

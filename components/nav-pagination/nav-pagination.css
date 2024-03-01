@@ -1,5 +1,10 @@
 .navigation {
-  height: 30px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background-color: #fff;
+  padding: 15px;
+  width: 100vw;
   display: grid;
   grid-template-columns: 100px 100px 100px;
   justify-content: center;
